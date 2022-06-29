@@ -71,7 +71,7 @@ public class BankAccount {
 public class BankAccountDemo {
     public static void main(String[] args) {
         BankAccount myAccount = new BankAccount(100);
-	        BankAccount anotherAccount = new BankAccount();
+	BankAccount anotherAccount = new BankAccount();
         myAccount.withdraw(200);
         myAccount.printBalance();
         myAccount.deposit(6000);
