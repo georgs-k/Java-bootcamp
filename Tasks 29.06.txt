@@ -1,0 +1,83 @@
+public class MultiplicationTable {
+    public static void main(String[] args) {
+        int[][] multiplicationTable = new int[10][10];
+        for (int i = 0; i < multiplicationTable.length; i++) for (int j = 0; j < multiplicationTable[i].length; j++) {
+            multiplicationTable[i][j] = (i + 1) * (j + 1);
+            System.out.printf("%d * %d = %d%n", i + 1, j + 1, multiplicationTable[i][j]);
+        }
+    }
+}
+
+public class CopyOfArray {
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3, 4};
+        int[] copyOfArray = new int[4];
+        for (int i = 0; i < 4; i++) copyOfArray[i] = array[i];
+    }
+}
+
+public class BankAccount {
+
+    private double balance = 0;
+    private double depositLimit = 5000;
+
+    public BankAccount() { }
+
+    public BankAccount(double balance) { this.balance = balance; }
+
+    public BankAccount(double balance, double depositLimit) {
+        this.balance = balance;
+        this.depositLimit = depositLimit;
+    }
+
+    public boolean deposit(double amount) {
+        if (amount > depositLimit) {
+            System.out.printf("Transaction cancelled. Max deposit: %.2f | Your deposit: %.2f%n",
+                depositLimit, amount);
+            return false;
+        }
+        balance += amount;
+        return true;
+    }
+
+    public boolean withdraw(double amount) {
+        if (amount > balance) {
+            System.out.println("There is not enough funds.");
+            return false;
+        }
+        balance -= amount;
+        return true;
+    }
+
+    public boolean transferTo(BankAccount destinationAccount, double amount) {
+        if (!withdraw(amount)) {
+            System.out.printf("Transfer cancelled. You are trying to transfer %.2f units, "
+                + "but only %.2f are available.%n", amount, balance);
+            return false;
+        }
+        if (!destinationAccount.deposit(amount)) {
+            balance += amount; // putting the withdrawn amount back on the balance
+                               // if depositing fails
+            return false;
+        }
+        return true;
+    }
+
+    public void printBalance() {
+        System.out.printf("The current balance is: %.2f%n", balance);
+    }
+}
+
+public class BankAccountDemo {
+    public static void main(String[] args) {
+        BankAccount myAccount = new BankAccount(100);
+	        BankAccount anotherAccount = new BankAccount();
+        myAccount.withdraw(200);
+        myAccount.printBalance();
+        myAccount.deposit(6000);
+        myAccount.printBalance();
+        myAccount.transferTo(anotherAccount, 300);
+        myAccount.printBalance();
+        anotherAccount.printBalance();
+    }
+}
