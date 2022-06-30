@@ -1,0 +1,206 @@
+// Write a Java program to create a new array list, add some colors (string) and print out the collection.
+
+import java.util.ArrayList;
+
+public class Task {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("red");
+        list.add("black");
+        list.add("white");
+        list.add("green");
+        for (String color : list) System.out.println(color);
+    }
+}
+
+// Write a Java program to print all the elements of a ArrayList using the position of the elements.
+
+import java.util.ArrayList;
+
+public class Task {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("red");
+        list.add("black");
+        list.add("white");
+        list.add("green");
+        for (int i = list.size() - 1; i >= 0; i--) System.out.println(list.get(i));
+    }
+}
+
+// Write a Java program to append the specified element to the end of a linked list.
+
+import java.util.LinkedList;
+
+public class Task {
+    public static void main(String[] args) {
+        LinkedList<String> list = new LinkedList<>();
+        list.add("red");
+        list.add("black");
+        list.add("white");
+        list.add("green");
+        list.addLast("light green");
+    }
+}
+
+// Write a Java program to replace an element in a linked list.
+
+import java.util.LinkedList;
+
+public class Task {
+    public static void main(String[] args) {
+        LinkedList<String> list = new LinkedList<>();
+        list.add("red");
+        list.add("black");
+        list.add("white");
+        list.add("green");
+        list.set(3, "light green");
+    }
+}
+
+// Write a Java program to append the specified element to the end of a hash set.
+
+import java.util.HashSet;
+
+public class Task {
+    public static void main(String[] args) {
+        HashSet<String> set = new HashSet<>();
+        set.add("red");
+        set.add("black");
+        set.add("white");
+        set.add("green");
+        set.add("light green");
+    }
+}
+
+// Write a Java program to remove all of the elements from a hash set.
+
+import java.util.HashSet;
+
+public class Task {
+    public static void main(String[] args) {
+        HashSet<String> set = new HashSet<>();
+        set.add("red");
+        set.add("black");
+        set.add("white");
+        set.add("green");
+        set.clear();
+    }
+}
+
+//  Write a Java program to create a new tree set, add some colors (string) and print out the tree set.
+
+import java.util.TreeSet;
+
+public class Task {
+    public static void main(String[] args) {
+        TreeSet<String> set = new TreeSet<>();
+        set.add("red");
+        set.add("black");
+        set.add("white");
+        set.add("green");
+        System.out.println(set);
+    }
+}
+
+//  Write a Java program to remove a given element from a tree set.
+
+import java.util.TreeSet;
+
+public class Task {
+    public static void main(String[] args) {
+        TreeSet<String> set = new TreeSet<>();
+        set.add("red");
+        set.add("black");
+        set.add("white");
+        set.add("green");
+        set.remove("white");
+    }
+}
+
+//  Write a Java program to create a new priority queue, add some colors (string)
+//  and print out the elements of the priority queue.
+
+import java.util.PriorityQueue;
+
+public class Task {
+    public static void main(String[] args) {
+        PriorityQueue<String> queue = new PriorityQueue<>();
+        queue.add("red");
+        queue.add("black");
+        queue.add("white");
+        queue.add("green");
+        System.out.println(queue);
+    }
+}
+
+//  Write a Java program to associate the specified value with the specified key in a HashMap.
+
+import java.util.HashMap;
+
+public class Task {
+    public static void main(String[] args) {
+        HashMap<String, String> map = new HashMap();
+        map.put("tomato", "red");
+        map.put("coal", "black");
+        map.put("snow", "white");
+        map.put("grass", "green");
+    }
+}
+
+//  Write a Java program to get a collection view of the values contained in this map.
+
+import java.util.HashMap;
+
+public class Task {
+    public static void main(String[] args) {
+        HashMap<String, String> map = new HashMap();
+        map.put("tomato", "red");
+        map.put("coal", "black");
+        map.put("snow", "white");
+        map.put("grass", "green");
+        System.out.println(map.values());
+    }
+}
+
+//  Write a Java program to associate the specified value with the specified key in a Tree Map.
+
+import java.util.TreeMap;
+
+public class Task {
+    public static void main(String[] args) {
+        TreeMap<String, String> map = new TreeMap();
+        map.put("tomato", "red");
+        map.put("coal", "black");
+        map.put("snow", "white");
+        map.put("grass", "green");
+    }
+}
+
+//  Write a Java program to get the least key greater than or equal to the given key.
+//  Returns null if there is no such key.
+
+import java.util.TreeMap;
+
+public class Task {
+
+    private static final TreeMap<String, String> map = new TreeMap();
+
+    public static void main(String[] args) {
+        map.put("tomato", "red");
+        map.put("coal", "black");
+        map.put("snow", "white");
+        map.put("grass", "green");
+        System.out.println(nearestAbove("wood"));
+    }
+
+    // Looks like I occasionally reimplemented the ceilingKey method :-)
+
+    public static String nearestAbove(String givenKey) {
+        String nearestKey = null;
+        for (String temp : map.keySet())
+            if (temp.compareTo(givenKey) >=0 && ((nearestKey == null) || (temp.compareTo(nearestKey)) < 0))
+                nearestKey = temp;
+        return nearestKey;
+    }
+}
