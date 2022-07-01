@@ -1,0 +1,34 @@
+public class NearestGreater {
+
+    // A static method that returns the least number in an array,
+    // greater or equal to the key value.
+    // If there is no such number -- returns null.
+
+    public static Integer find(int[] array, int keyValue) {
+        Integer nearestGreater = null;
+        for (int temp : array)
+            if (temp >= keyValue && ((nearestGreater == null) || (temp < nearestGreater)))
+                nearestGreater = temp;
+        return nearestGreater;
+    }
+}
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class NearestGreaterTest {
+
+    int[] testArray = {9, 3, 12, 6};
+
+    @Test
+    @DisplayName("Find the nearest greater number in an array")
+    void find() {
+        assertAll(() -> assertEquals(3, NearestGreater.find(testArray, 2)),
+                  () -> assertEquals(6, NearestGreater.find(testArray, 5)),
+                  () -> assertEquals(9, NearestGreater.find(testArray, 8)),
+                  () -> assertEquals(12, NearestGreater.find(testArray, 11)),
+                  () -> assertEquals(null, NearestGreater.find(testArray, 14)));
+    }
+}
